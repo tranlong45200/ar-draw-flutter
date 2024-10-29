@@ -1,13 +1,15 @@
-import 'package:ar_draw/screen/splashPage/splashController.dart';
+import 'package:get/get.dart';
+import '../shareController.dart';
+import '../../model/constanst.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:ar_draw/screen/splashPage/splashController.dart';
 
-import '../../model/constanst.dart';
 
 class Splash extends GetWidget {
   SplashController controller = Get.find();
+  ShareController shareController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class Splash extends GetWidget {
           Colors.white, // Set the background color of the splash screen
       body: Stack(
         children: [
-          SvgPicture.asset("assets/svg/backgroundsplash.svg"),
+          SvgPicture.asset("assets/svg/background_splash.svg"),
           Container(
             height: double.infinity,
             width: double.infinity,

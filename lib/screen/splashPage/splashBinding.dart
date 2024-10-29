@@ -1,3 +1,4 @@
+import 'package:ar_draw/screen/shareController.dart';
 import 'package:ar_draw/screen/splashPage/splashController.dart';
 import 'package:get/get.dart';
 

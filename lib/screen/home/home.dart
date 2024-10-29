@@ -1,19 +1,34 @@
-import 'package:ar_draw/appRouter.dart';
-import 'package:ar_draw/screen/home/home_controller.dart';
-import 'package:ar_draw/screen/home/view/item_home.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
+import '../../device/services/storage_service.dart';
 import '../../model/constanst.dart';
+import 'package:flutter/material.dart';
+import 'package:ar_draw/appRouter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ar_draw/screen/shareController.dart';
+import 'package:ar_draw/core/utils/dialog_utils.dart';
+import 'package:ar_draw/screen/home/view/item_home.dart';
+import 'package:ar_draw/screen/home/home_controller.dart';
 
 class HomePage extends GetWidget {
   HomePage({super.key});
 
   HomeController controller = Get.find();
+  ShareController shareController = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    if (!shareController.isUsed.value) {
+      StorageService.saveString("isUsed","1");
+    }
+    void _showImageDialog(String base64Image, BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext ct) {
+          return CenteredDialog(cxt: context);
+        },
+      );
+    }
+
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.white,
@@ -28,9 +43,16 @@ class HomePage extends GetWidget {
               ),
             ),
             actions: [
-              SvgPicture.asset(
-                "assets/svg/settings.svg",
-                height: 28,
+              InkWell(
+                onTap: () {
+                  Get.toNamed(
+                    AppRouter.SETTING_PAGE,
+                  );
+                },
+                child: SvgPicture.asset(
+                  "assets/svg/settings.svg",
+                  height: 28,
+                ),
               ),
               const SizedBox(
                 width: 12,
@@ -50,6 +72,7 @@ class HomePage extends GetWidget {
                 Column(
                   children: [
                     Container(
+                      padding: EdgeInsets.all(AppValues.padding),
                       child: Stack(
                         alignment: Alignment.centerRight,
                         children: [
@@ -99,6 +122,7 @@ class HomePage extends GetWidget {
                           Expanded(
                               child: InkWell(
                                   onTap: () {
+                                    shareController.isShowCamera = true;
                                     Get.toNamed(AppRouter.CATEGORY_PAGE);
                                   },
                                   child: const HomeItem(
@@ -111,7 +135,10 @@ class HomePage extends GetWidget {
                           ),
                           Expanded(
                               child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    shareController.isShowCamera = false;
+                                    Get.toNamed(AppRouter.CATEGORY_PAGE);
+                                  },
                                   child: const HomeItem(
                                       title: "Trace Image",
                                       imagePath: "assets/images/slide1.png",
@@ -130,7 +157,9 @@ class HomePage extends GetWidget {
                         children: [
                           Expanded(
                               child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.toNamed(AppRouter.MY_CREATION_PAGE);
+                                  },
                                   child: const HomeItem(
                                       title: "My Creation",
                                       imagePath: "assets/images/slide2.png",
@@ -141,7 +170,9 @@ class HomePage extends GetWidget {
                           ),
                           Expanded(
                               child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    _showImageDialog("", context);
+                                  },
                                   child: const HomeItem(
                                       title: "Help To Drawing",
                                       imagePath: "assets/images/slide3.png",

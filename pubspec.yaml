@@ -30,22 +30,43 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_html: any
-  dio: ^5.4.0
+  dio: any
   flutter_widget_from_html: ^0.14.9
   loading_animation_widget: ^1.2.0+4
   url_launcher: ^6.2.2
   get: any
   shared_preferences: any
   flutter_svg: ^2.0.7
+  flutter_inappwebview: ^6.0.0
+  photo_view: any
+  http: any
+  camera: ^0.10.5+4
+  path_provider: ^2.1.1
+  image_picker: ^1.0.7
+  smooth_page_indicator: ^1.1.0
+  flutter_localization: ^0.2.0
+  l10n_flutter: ^1.0.7
+  intl: any
+  permission_handler: ^11.1.0
+  flutter_advanced_switch: ^3.0.1
+  video_thumbnail: ^0.5.3
+  image_gallery_saver: ^2.0.3
+  share_plus: ^7.2.1
+flutter_intl:
+  enabled: true
+  main_locale: en
+  class_name: S
 
+dependency_overrides:
+  camera_android: 0.9.7+1
+  camera_avfoundation: 0.9.7+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,15 +88,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/
-    - assets/icons/
     - assets/images/
     - assets/svg/
-    # Styles
-    - assets/styles/map/light.json
-    - assets/styles/map/dark.json
+    - assets/font_view/
+
   fonts:
     - family: ComicSansMS
       fonts:
@@ -85,6 +105,54 @@ flutter:
         - asset: assets/fonts/comicz.ttf
         - asset: assets/fonts/design.graffiti.comicsansms.ttf
         - asset: assets/fonts/design.graffiti.comicsansmsgras.ttf
+    - family: Academy
+      fonts:
+        - asset: assets/font_view/Academy.ttf
+    - family: Comunismo
+      fonts:
+        - asset: assets/font_view/Comunismo.ttf
+    - family: DISCOVERY
+      fonts:
+        - asset: assets/font_view/DISCOVERY.ttf
+    - family: JuryDuty
+      fonts:
+        - asset: assets/font_view/JuryDuty.ttf
+
+    - family: Kamikaze
+      fonts:
+        - asset: assets/font_view/Kamikaze.ttf
+    - family: Lackawanna
+      fonts:
+        - asset: assets/font_view/Lackawanna.ttf
+    - family: LilyScriptOne-Regular
+      fonts:
+        - asset: assets/font_view/LilyScriptOne-Regular.ttf
+    - family: MerryChristmasStar
+      fonts:
+        - asset: assets/font_view/MerryChristmasStar.ttf
+
+    - family: NeonDisco
+      fonts:
+        - asset: assets/font_view/NeonDisco.ttf
+    - family: Royal
+      fonts:
+        - asset: assets/font_view/Royal.ttf
+    - family: Sho-CardCapsNF
+      fonts:
+        - asset: assets/font_view/Sho-CardCapsNF.ttf
+    - family: Takeover
+      fonts:
+        - asset: assets/font_view/Takeover.ttf
+
+    - family: TakeoverCollegeRegular
+      fonts:
+        - asset: assets/font_view/TakeoverCollegeRegular.ttf
+    - family: Vacations in Phuket
+      fonts:
+        - asset: assets/font_view/Vacations in Phuket.ttf
+    - family: ka
+      fonts:
+        - asset: assets/font_view/ka.ttf
 
 
   # To add assets to your application, add an assets section, like this:

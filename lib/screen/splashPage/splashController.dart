@@ -1,4 +1,3 @@
-import 'package:ar_draw/appRouter.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +14,6 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     super.onInit();
-
-    Future.delayed(Duration(seconds: 5), () {
-      // Navigate to your desired page using Navigator
-      Get.offNamed(AppRouter.HOME_PAGE);
-    });
 
     controller = AnimationController(
       vsync: this,
@@ -62,7 +56,14 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
       }
     });
     animationProcess.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {}
+      if (status == AnimationStatus.completed) {
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => HomePage(),
+        //   ),
+        // );
+      }
     });
   }
 }
